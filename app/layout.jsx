@@ -11,6 +11,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <link rel="icon" href="/img/ceberusLogo.png" sizes="any" />
       <body className={inter.className}>{children}</body>
     </html>
   );
