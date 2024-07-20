@@ -1,13 +1,62 @@
+"use client";
 import Footer from "../app/component/Footer";
 import Header from "../app/component/Header";
+import React, { useState, useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+// import "../scss/style.scss";
 
-export default function Home() {
+function Home() {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const fetchData = async () => {
+    try {
+      const res = await fetch("https://philosophy-quotes-api.glitch.me/quotes");
+      if (res.ok) {
+        const val = await res.json();
+        setData(val);
+      }
+    } catch (err) {
+      console.error("Error fetching data: ", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  // useEffect(() => {
+  //   AOS.init({
+  //     // easing: "fade-up",
+  //     // once: true,
+  //     // offset: 50,
+  //     // duration: 3000,
+  //     easing: "ease-out-cubic",
+  //     once: true,
+  //     offset: 50,
+  //   });
+  // }, []);
+
+  useEffect(() => {
+    AOS.refresh({ easing: "fade-up", delay: 400, duration: 800 });
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="loading-container">
+        <div className="loader"></div>
+      </div>
+    );
+  }
   return (
     <>
       <Header />
-      <main className="h-auto pt-4 flex-col flex items-center justify-start bg-black text-white">
+      <main className="h-auto pt-4 flex-col flex items-center justify-start bg-black text-white border-none">
         {/* Search form */}
-        <form className="max-w-sm mx-auto border-2 rounded-lg">
+        <form className="max-w-md w-full mx-auto border-2 rounded-lg">
           <div className="flex">
             <div className="relative w-full">
               <input
@@ -43,53 +92,23 @@ export default function Home() {
         </form>
 
         {/* main content */}
-        <div className="container w-full max-w-xl space-y-4 mt-6 h-full">
-          <div class="gap-5 columns-4 margin-top-10">
-            <div className="quote border-2 border-sky-500 p-4 bg-white rounded shadow text-center text-lg font-semibold text-gray-700">
-              "The unexamined life is not worth living." - Socrates
-            </div>
-            <div className="quote  border-2 border-sky-500 p-4 bg-white rounded shadow text-center text-lg font-semibold text-gray-700">
-              "To be is to be perceived.The unexamined life is not worth
-              livingThe unexamined life is not worth livingThe unexamined life
-              is not worth living" - George Berkeley
-            </div>
-            <div className="quote  border-2 border-sky-500 p-4 bg-white rounded shadow text-center text-lg font-semibold text-gray-700">
-              "I think, therefore I am." - René Descartes
-            </div>
-            <div className="quote  border-2 border-sky-500 p-4 bg-white rounded shadow text-center text-lg font-semibold text-gray-700">
-              "The unexamined life is not worth living.The unexamined life is
-              not worth living" - Socrates
-            </div>
-            <div className="quote  border-2 border-sky-500 p-4 bg-white rounded shadow text-center text-lg font-semibold text-gray-700">
-              "To be is to be perceived.The unexamined life is not worth" -
-              George Berkeley
-            </div>
-            <div className="quote  border-2 border-sky-500 p-4 bg-white rounded shadow text-center text-lg font-semibold text-gray-700">
-              "I think, therefore I am." - René Descartes
-            </div>
-            <div className="quote  border-2 border-sky-500 p-4 bg-white rounded shadow text-center text-lg font-semibold text-gray-700">
-              "The unexamined life is not worth living." - Socrates
-            </div>
-            <div className="quote  border-2 border-sky-500 p-4 bg-white rounded shadow text-center text-lg font-semibold text-gray-700">
-              "To be is to be perceived.The unexamined life is not worth living"
-              - George Berkeley
-            </div>
-            <div className="quote  border-2 border-sky-500 p-4 bg-white rounded shadow text-center text-lg font-semibold text-gray-700">
-              "I think, therefore I am." - René Descartes
-            </div>
-            <div className="quote  border-2 border-sky-500 p-4 bg-white rounded shadow text-center text-lg font-semibold text-gray-700">
-              "The unexamined life is not worth living.The unexamined life is
-              not worth living" - Socrates
-            </div>
-            <div className="quote  border-2 border-sky-500 p-4 bg-white rounded shadow text-center text-lg font-semibold text-gray-700">
-              "To be is to be perceived." - George Berkeley
-            </div>
-            <div className="quote  border-2 border-sky-500 p-4 bg-white rounded shadow text-center text-lg font-semibold text-gray-700">
-              "I think, therefore I am.The unexamined life is not worth
-              livingThe unexamined life is not worth livingThe unexamined life
-              is not worth livingThe unexamined life is not worth living" - René
-              Descartes
-            </div>
+        <div className="container w-full max-w-4xl space-y-4 mt-6 h-full p-5">
+          <div className="gap-4 columns-2 sm:gap-5 md:gap-10 sm:columns-3 md:columns-4">
+            {data.map((item, index) => (
+              <div
+                className="quote mt-5 sm:mt-6 md:mt-10 border-2 border-sky-500 p-4 bg-white rounded shadow text-center text-sm
+             font-semibold text-gray-700"
+                key={index}
+              >
+                "The unexamined life is not worth living." - Socrates
+                <p>
+                  {item.quote} -{" "}
+                  <span>
+                    {item.source} ({item.philosophy})
+                  </span>
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </main>
@@ -97,3 +116,5 @@ export default function Home() {
     </>
   );
 }
+
+export default Home;

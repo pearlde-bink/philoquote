@@ -12,7 +12,14 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <link rel="icon" href="/img/ceberusLogo.png" sizes="any" />
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        {children}
+        <link
+          href="https://unpkg.com/aos@2.3.1/dist/aos.css"
+          rel="stylesheet"
+        />
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+      </body>
     </html>
   );
 }

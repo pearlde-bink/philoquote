@@ -19,13 +19,13 @@ function Footer() {
   ];
 
   return (
-    <footer className="bg-black text-center py-2">
+    <footer className="bg-black text-center py-2 pt-6">
       <p className="text-white pt-2">
         © 2024 Philosophy Quotes. All rights reserved.
       </p>
       <div className="social p-2 my-2">
         <hr className="w-12/12 mb-3  border-gray-500" />
-        <ul className="flex flex-row justify-between w-4/12 text-gray-600">
+        <ul className="flex flex-row justify-between w-4/12 text-gray-600 pl-5">
           <li>
             <a href="">
               <svg
