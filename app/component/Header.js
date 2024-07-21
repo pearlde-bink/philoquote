@@ -135,16 +135,16 @@ function Home() {
                 {openNotification && (
                   <div
                     id="toast-notification"
-                    class="absolute right-1/4 top-10 w-60 p-4 text-gray-900 bg-white rounded-lg shadow dark:bg-gray-800 dark:text-gray-300"
+                    class="absolute right-1/4 top-10 w-60 p-3 text-gray-900 bg-white rounded-lg shadow dark:bg-gray-800 dark:text-gray-300"
                     role="alert"
                   >
-                    <div class="flex items-center mb-3">
+                    <div class="flex items-center mb-3 px-1">
                       <span class="mb-1 text-sm font-semibold text-gray-900 dark:text-white">
                         New notification
                       </span>
                       <button
                         type="button"
-                        class="ms-auto -mx-1.5 -my-1.5 bg-white justify-center items-center flex-shrink-0 text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"
+                        class="ms-auto -mx-1.5 -my-1.5 bg-white justify-center items-center flex-shrink-0 text-gray-400 hover:text-red-600 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"
                         data-dismiss-target="#toast-notification"
                         aria-label="Close"
                       >
@@ -166,11 +166,11 @@ function Home() {
                         </svg>
                       </button>
                     </div>
-                    <div class="flex items-center">
+                    <div class="flex items-center hover:bg-blue-100 hover:rounded-lg">
                       <div class="relative inline-block shrink-0">
                         <img
-                          class="w-7 h-7 rounded-full"
-                          src="/img/ceberusLogo.png"
+                          class="w-10 h-10 rounded-full"
+                          src="/img/jnk2.png"
                           alt="Jese Leos image"
                         />
                         <span class="absolute -bottom-4 -right-2 inline-flex items-center justify-center w-6 h-6 bg-blue-600 rounded-full">

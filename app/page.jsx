@@ -83,7 +83,7 @@ function Home() {
           <div className="gap-4 columns-2 sm:gap-5 md:gap-10 sm:columns-3 md:columns-4">
             {data.map((item, index) => (
               <div
-                className="quote w-auto mt-5 sm:mt-6 md:mt-10 border-2 hover:border-pink-800 p-3 bg-white rounded shadow text-center text-sm
+                className="quote w-auto mt-5 sm:mt-6 md:mt-10 border-2 hover:border-pink-800 hover:bg-gradient-to-b from-indigo-200 via-purple-200 to-pink-200 p-3 bg-white rounded shadow text-center text-sm
               text-gray-700 font-serif font-thin hover:bg-gray-100"
                 data-aos="fade-up"
                 data-aos-duration="1000"
@@ -98,7 +98,7 @@ function Home() {
                   <button
                     title="Add to favorites"
                     type="button"
-                    className="addfav text-pink-200 hover:cursor-pointer focus:ring-4 rounded-lg text-sm"
+                    className="addfav text-pink-300 hover:cursor-pointer focus:ring-4 rounded-lg text-sm"
                   >
                     <svg
                       className="group-hover:fill-red-600"
