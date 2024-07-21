@@ -4,7 +4,6 @@ import Header from "../app/component/Header";
 import React, { useState, useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-// import "../scss/style.scss";
 
 function Home() {
   const [data, setData] = useState([]);
@@ -28,20 +27,8 @@ function Home() {
     fetchData();
   }, []);
 
-  // useEffect(() => {
-  //   AOS.init({
-  //     // easing: "fade-up",
-  //     // once: true,
-  //     // offset: 50,
-  //     // duration: 3000,
-  //     easing: "ease-out-cubic",
-  //     once: true,
-  //     offset: 50,
-  //   });
-  // }, []);
-
   useEffect(() => {
-    AOS.refresh({ easing: "fade-up", delay: 400, duration: 800 });
+    AOS.init({});
   }, []);
 
   if (loading) {
@@ -68,7 +55,7 @@ function Home() {
               />
               <button
                 type="submit"
-                className="absolute top-0 end-0 p-2.5 text-sm font-medium h-full text-white bg-blue-700 rounded-e-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                className="absolute top-0 end-0 p-2.5 text-sm font-medium h-full text-white bg-pink-800 rounded-e-lg border border-pink-700 hover:bg-pink-600 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
               >
                 <svg
                   className="w-4 h-4"
@@ -92,21 +79,41 @@ function Home() {
         </form>
 
         {/* main content */}
-        <div className="container w-full max-w-4xl space-y-4 mt-6 h-full p-5">
+        <div className="container w-fill max-w-4xl space-y-4 mt-6 h-full p-5">
           <div className="gap-4 columns-2 sm:gap-5 md:gap-10 sm:columns-3 md:columns-4">
             {data.map((item, index) => (
               <div
-                className="quote mt-5 sm:mt-6 md:mt-10 border-2 border-sky-500 p-4 bg-white rounded shadow text-center text-sm
-             font-semibold text-gray-700"
+                className="quote w-auto mt-5 sm:mt-6 md:mt-10 border-2 hover:border-pink-800 p-3 bg-white rounded shadow text-center text-sm
+              text-gray-700 font-serif font-thin hover:bg-gray-100"
+                data-aos="fade-up"
+                data-aos-duration="1000"
                 key={index}
               >
-                "The unexamined life is not worth living." - Socrates
-                <p>
-                  {item.quote} -{" "}
-                  <span>
-                    {item.source} ({item.philosophy})
-                  </span>
-                </p>
+                <p className="">{item.quote}</p>
+                <div className="group w-full pt-3 flex flex-row justify-evenly text-center">
+                  <p className="font-bold text-sm font-sans">
+                    {item.source}
+                    {/* ({item.philosophy}) */}
+                  </p>
+                  <button
+                    title="Add to favorites"
+                    type="button"
+                    className="addfav text-pink-200 hover:cursor-pointer focus:ring-4 rounded-lg text-sm"
+                  >
+                    <svg
+                      className="group-hover:fill-red-600"
+                      stroke="currentColor"
+                      fill="currentColor"
+                      stroke-width="0"
+                      viewBox="0 0 512 512"
+                      height="20px"
+                      width="20px"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"></path>
+                    </svg>
+                  </button>
+                </div>
               </div>
             ))}
           </div>

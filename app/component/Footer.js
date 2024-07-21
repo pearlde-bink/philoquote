@@ -20,9 +20,9 @@ function Footer() {
 
   return (
     <footer className="bg-black text-center py-2 pt-6">
-      <p className="text-white pt-2">
+      {/* <p className="text-white pt-2">
         © 2024 Philosophy Quotes. All rights reserved.
-      </p>
+      </p> */}
       <div className="social p-2 my-2">
         <hr className="w-12/12 mb-3  border-gray-500" />
         <ul className="flex flex-row justify-between w-4/12 text-gray-600 pl-5">
@@ -90,7 +90,7 @@ function Footer() {
         <hr className="w-12/12 mt-3  border-gray-500" />
       </div>
       <div className="flex flex-row justify-between items-center text-white">
-        <div className="w-full flex justify-evenly items-center text-xs">
+        <div className="w-full flex justify-evenly items-start text-xs">
           {sections.map((section) => (
             <div key={section.title} className="flex flex-col items-center">
               <h4 className="text-base">{section.title}</h4>

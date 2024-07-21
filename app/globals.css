@@ -62,3 +62,8 @@ body {
   font-family: Arial, sans-serif;
   color: #333;
 }
+
+.quote:hover {
+  font-size: 15px;
+  transition: 2s;
+}
